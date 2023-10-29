@@ -1,1 +1,1 @@
-# this is the start of a very epic project
+# This is a very epic project

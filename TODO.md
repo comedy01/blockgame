@@ -1,17 +1,23 @@
 # TODO LIST
 
 ## World
-- set up TileMap and tileset
+DONE - set up TileMap and tileset
 
 ## Blocks
-- write basic block placing/breaking script
+DONE - write basic block placing/breaking script
 - add more log types
 - add planks for each log type
-- add more wooden building blocks, platforms? stairs?
+- window
+DONE - spike
+- chair
+- table
+- platform
+- lamp
+- hedge
 
 ## Player Model
-- write basic movement script for player model
-- set up camera2d node 
+DONE - write basic movement script for player model
+DONE - set up camera2d node 
 - Design base player model
 - Design animations for player model
 

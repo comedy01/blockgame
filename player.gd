@@ -14,7 +14,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 			
-	var direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 
 	if direction:
 		velocity.x = direction * SPEED
@@ -24,7 +24,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		jumps = 0
 
-	if Input.is_action_just_pressed("ui_accept") and (is_on_floor() or jumps < MAX_JUMPS):
+	if Input.is_action_just_pressed("move_up") and (is_on_floor() or jumps < MAX_JUMPS):
 		velocity.y = JUMP_VELOCITY
 		jumps += 1
 		

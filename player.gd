@@ -14,7 +14,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	velocity.x = SPEED * (Input.get_action_strength("move_right") - Input.get_action_strength("move_left"))
+	var movement_x: float = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
+	velocity.x = movement_x * SPEED if movement_x != 0 else move_toward(velocity.x, 0, SPEED * delta * 10)
 
 	if is_on_floor():
 		jumps = 0

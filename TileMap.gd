@@ -10,4 +10,6 @@ func _process(delta: float) -> void:
 		erase_cell(0, selected_tile())
 	
 	if (Input.is_action_pressed("right_click")):
-		set_cell(0, selected_tile(), 0, SELECTED_BLOCK)
+		var tile: Vector2 = selected_tile()
+		if get_cell_source_id(0, tile) == -1:
+			set_cell(0, tile, 0, SELECTED_BLOCK)

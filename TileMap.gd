@@ -11,21 +11,11 @@ var blocks: Array = [
 
 var selected_block_index: int = 0
 
-enum ScrollDirection { UP, DOWN }
-
 func log_selected_block() -> void:
 	print("Currently selected block: %s" % blocks[selected_block_index].name)
 
-func change_block_selection(direction: ScrollDirection) -> void:
-	match direction:
-		ScrollDirection.UP:
-			selected_block_index += 1
-			if selected_block_index == blocks.size():
-				selected_block_index = 0
-		ScrollDirection.DOWN:
-			if selected_block_index == 0:
-				selected_block_index = blocks.size()
-			selected_block_index -= 1
+func change_block_selection(direction: int) -> void:
+	selected_block_index = wrapi(selected_block_index + direction, 0, blocks.size())
 	log_selected_block()
 
 func selected_tile() -> Vector2:
@@ -33,10 +23,10 @@ func selected_tile() -> Vector2:
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("scroll_up"):
-		change_block_selection(ScrollDirection.UP)
+		change_block_selection(1)
 
 	if Input.is_action_just_pressed("scroll_down"):
-		change_block_selection(ScrollDirection.DOWN)
+		change_block_selection(-1)
 	
 	if Input.is_action_pressed("left_click"):
 		erase_cell(0, selected_tile())

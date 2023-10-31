@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctkhhvep2n7c4"]
+[gd_scene load_steps=4 format=3 uid="uid://ctkhhvep2n7c4"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_mc610"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="2_gbdjf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53k6l"]
 size = Vector2(26, 26)
@@ -14,3 +15,4 @@ shape = SubResource("RectangleShape2D_53k6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+script = ExtResource("2_gbdjf")

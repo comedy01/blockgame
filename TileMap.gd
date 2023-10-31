@@ -5,9 +5,9 @@ var blocks: Array = [
 	Block.new(0, Vector2(3, 1), "Dirt block"),
 	Block.new(0, Vector2(5, 1), "Stone block"),
 	Block.new(0, Vector2(7, 1), "Log block"),
-	Block.new(0, Vector2(9,1), "Spike block"),
-	Block.new(0, Vector2(11,1), "Window"),
-	Block.new(0, Vector2(13 ,1), "Table")]
+	Block.new(0, Vector2(9, 1), "Spike block"),
+	Block.new(0, Vector2(11, 1), "Window"),
+	Block.new(0, Vector2(13, 1), "Table")]
 
 var selected_block_index: int = 0
 

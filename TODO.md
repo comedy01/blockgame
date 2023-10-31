@@ -7,7 +7,7 @@
 - DONE - write basic block placing/breaking script
 - add more log types
 - add planks for each log type
-- window
+- DONE - window
 - DONE - spike
 - chair
 - table

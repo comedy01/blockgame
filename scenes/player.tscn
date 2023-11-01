@@ -22,4 +22,5 @@ script = ExtResource("2_gbdjf")
 layer = 2
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("3_baqfb")]
-position = Vector2(15, 19)
+texture_filter = 1
+position = Vector2(19, 21)

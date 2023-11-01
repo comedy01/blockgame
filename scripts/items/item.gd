@@ -7,6 +7,6 @@ class UseCallback:
 	var place_block: Callable
 
 # Pure virtual function
-func use(callback: UseCallback) -> void:
+func use(_callback: UseCallback) -> void:
 	# Should be never reached
 	assert(false)

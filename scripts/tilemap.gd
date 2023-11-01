@@ -27,7 +27,7 @@ func change_hotbar_selection(direction: int) -> void:
 func selected_tile() -> Vector2:
 	return local_to_map(get_global_mouse_position())
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("scroll_up"):
 		change_hotbar_selection(1)
 

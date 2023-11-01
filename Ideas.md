@@ -1,14 +1,24 @@
-#  Ideas
+# Blockgame ideas
 
-- Loot pool for enemies
-- bosses
-- NPC shops rather than having to purchase from menu shop
-- tools (pickaxes, axes, shovels, etc)
-- workbench for crafting more complex items, basic items can be crafted without this
-- workstations for other kinds of crafting, potions?
-- armor
+## NPCs
+- Merchants
+- Guides
+- Enemies
+- Bosses
+
+## Tools
+- Shovels for sand-type blocks
+- Buckets for liquid blocks
+- Axes for living wood
+
+## Crafting
+- Basic recipes can be made by hand
+- Complex recipes require specialized crafting stations
+- Alchemy table for potions
+
+## Accessories
 - accessories( for example wings to double jump or boots to run faster )
-- loot chests around the map
-- loot pool for chests
-- chest rarity?
-- dungeons ( puzzle / enemy thing with better loot ? (perhaps make these dungeons the different boss arenas? like terraria's queen bee for example))
+
+## World generation
+- Biome-specific chests with randomized loot
+- Biome-specific dungeons and internal minibiomes

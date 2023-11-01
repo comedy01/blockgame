@@ -8,7 +8,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps: int = 0
 
 func _draw() -> void:
-	draw_rect(Rect2(Vector2(0, 0), Vector2(26, 26)), Color(1, 0, 0), false)
+	draw_rect(Rect2(Vector2(0, 0), Vector2(26, 36)), Color(1, 0, 0), false)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

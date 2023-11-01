@@ -1,14 +1,16 @@
 extends TileMap
 
 var hotbar: Array = [
-	Tool.new(),
-	Block.new(0, Vector2(1, 1), "Grassy dirt block"),
-	Block.new(0, Vector2(3, 1), "Dirt block"),
-	Block.new(0, Vector2(5, 1), "Stone block"),
-	Block.new(0, Vector2(7, 1), "Log block"),
-	Block.new(0, Vector2(9, 1), "Spike block"),
-	Block.new(0, Vector2(11, 1), "Window"),
-	Block.new(0, Vector2(13, 1), "Table")]
+	Pickaxe.new(),
+	Hammer.new(),
+	Block.new(0, Vector2(1, 1),  Block.LAYER_FOREGROUND, "Grassy dirt block"),
+	Block.new(0, Vector2(3, 1),  Block.LAYER_FOREGROUND, "Dirt block"),
+	Block.new(0, Vector2(5, 1),  Block.LAYER_FOREGROUND, "Stone block"),
+	Block.new(0, Vector2(7, 1),  Block.LAYER_FOREGROUND, "Log block"),
+	Block.new(0, Vector2(9, 1),  Block.LAYER_FOREGROUND, "Spike block"),
+	Block.new(0, Vector2(11, 1), Block.LAYER_FOREGROUND, "Window"),
+	Block.new(0, Vector2(13, 1), Block.LAYER_FOREGROUND, "Table"),
+	Block.new(1, Vector2(0, 0),  Block.LAYER_BACKGROUND, "Cave wall")]
 
 var hotbar_selection_index: int = 0
 
@@ -34,10 +36,10 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_pressed("left_click"):
 		var callback = Item.UseCallback.new()
-		callback.break_block = func():
-			erase_cell(0, selected_tile())
+		callback.break_block = func(layer: int):
+			erase_cell(layer, selected_tile())
 		callback.place_block = func(block: Block):
 			var tile: Vector2 = selected_tile()
-			if get_cell_source_id(0, tile) == -1:
-				set_cell(0, tile, block.source_id, block.atlas_coords)
+			if get_cell_source_id(block.layer, tile) == -1:
+				set_cell(block.layer, tile, block.source_id, block.atlas_coords)
 		selected_item().use(callback)

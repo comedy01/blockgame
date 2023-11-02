@@ -3,13 +3,12 @@ extends TileMap
 var hotbar: Array = [
 	Pickaxe.new(),
 	Hammer.new(),
-	Block.new(0, Vector2(1, 1),  Block.LAYER_FOREGROUND, "Grassy dirt block"),
-	Block.new(0, Vector2(3, 1),  Block.LAYER_FOREGROUND, "Dirt block"),
-	Block.new(0, Vector2(5, 1),  Block.LAYER_FOREGROUND, "Stone block"),
-	Block.new(0, Vector2(7, 1),  Block.LAYER_FOREGROUND, "Log block"),
-	Block.new(0, Vector2(9, 1),  Block.LAYER_FOREGROUND, "Spike block"),
-	Block.new(0, Vector2(11, 1), Block.LAYER_FOREGROUND, "Window"),
-	Block.new(0, Vector2(13, 1), Block.LAYER_FOREGROUND, "Table"),
+	Block.new(0, Vector2(0, 0),  Block.LAYER_FOREGROUND, "Grassy dirt block"),
+	Block.new(0, Vector2(1, 0),  Block.LAYER_FOREGROUND, "Dirt block"),
+	Block.new(0, Vector2(2, 0),  Block.LAYER_FOREGROUND, "Stone block"),
+	Block.new(0, Vector2(3, 0),  Block.LAYER_FOREGROUND, "Log block"),
+	Block.new(0, Vector2(4, 0),  Block.LAYER_FOREGROUND, "Spike block"),
+	Block.new(0, Vector2(5, 0), Block.LAYER_FOREGROUND, "Window"),
 	Block.new(1, Vector2(0, 0),  Block.LAYER_BACKGROUND, "Cave wall")]
 
 var hotbar_selection_index: int = 0

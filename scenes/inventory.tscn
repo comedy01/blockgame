@@ -14,6 +14,7 @@ texture = ExtResource("2_0f7w0")
 position = Vector2(-3, -4)
 
 [node name="inventory grids" type="GridContainer" parent="."]
+texture_filter = 1
 offset_left = 5.0
 offset_top = 66.0
 offset_right = 385.0

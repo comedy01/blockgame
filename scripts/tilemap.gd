@@ -27,19 +27,25 @@ func change_hotbar_selection(direction: int) -> void:
 func selected_tile() -> Vector2:
 	return local_to_map(get_global_mouse_position())
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("scroll_up"):
-		change_hotbar_selection(1)
+var is_holding_down_left_click: bool = false
 
-	if Input.is_action_just_pressed("scroll_down"):
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("scroll_up"):
+		change_hotbar_selection(1)
+	elif event.is_action_pressed("scroll_down"):
 		change_hotbar_selection(-1)
-	
-	if Input.is_action_pressed("left_click"):
-		var callback = Item.UseCallback.new()
-		callback.break_block = func(layer: int):
-			erase_cell(layer, selected_tile())
-		callback.place_block = func(block: Block):
-			var tile: Vector2 = selected_tile()
-			if get_cell_source_id(block.layer, tile) == -1:
-				set_cell(block.layer, tile, block.source_id, block.atlas_coords)
-		selected_item().use(callback)
+	elif event.is_action_pressed("left_click"):
+		is_holding_down_left_click = true
+	elif event.is_action_released("left_click"):
+		is_holding_down_left_click = false
+
+func _process(_delta: float) -> void:
+	if not is_holding_down_left_click: return
+	var callback = Item.UseCallback.new()
+	callback.break_block = func(layer: int):
+		erase_cell(layer, selected_tile())
+	callback.place_block = func(block: Block):
+		var tile: Vector2 = selected_tile()
+		if get_cell_source_id(block.layer, tile) == -1:
+			set_cell(block.layer, tile, block.source_id, block.atlas_coords)
+	selected_item().use(callback)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://x2khg2eiu5jy"]
+[gd_scene load_steps=7 format=3 uid="uid://x2khg2eiu5jy"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_1da4s"]
 [ext_resource type="Texture2D" uid="uid://bccdmygc5efs4" path="res://assets/plain inventory slot.png" id="1_y1vea"]
 [ext_resource type="Texture2D" uid="uid://84n14e4maryu" path="res://assets/hotbar inventory slot.png" id="2_0f7w0"]
+[ext_resource type="Script" path="res://scripts/Settings.gd" id="4_orreh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t62pu"]
 texture = ExtResource("1_y1vea")
@@ -212,3 +213,13 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="Settings" type="Button" parent="."]
+offset_left = 1028.0
+offset_top = 577.0
+offset_right = 1119.0
+offset_bottom = 615.0
+text = "Settings "
+script = ExtResource("4_orreh")
+
+[connection signal="pressed" from="Settings" to="inventory grids" method="_on_settings_pressed"]

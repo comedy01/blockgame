@@ -16,6 +16,10 @@ shape = SubResource("RectangleShape2D_53k6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1008
+limit_bottom = 999999
 script = ExtResource("2_gbdjf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -35,12 +35,16 @@ var tile_properties: Dictionary = {}
 func set_default_properties(layer: int, tile: Vector2) -> void:
 	var properties = TileProperties.new()
 	var data: TileData = get_cell_tile_data(layer, tile)
+	assert(data != null)
 	properties.health = data.get_custom_data("block_health")
 	tile_properties[tile] = properties
 
 const BLOCK_HIT_INTERVAL: float = 0.25
 var block_hit_time: float = 0
 var is_holding_down_left_click: bool = false
+
+func tile_exists(layer: int, tile: Vector2) -> bool:
+	return get_cell_source_id(layer, tile) != -1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("scroll_up"):
@@ -67,7 +71,7 @@ func _process(delta: float) -> void:
 			block_hit_time = 0
 
 		var tile: Vector2 = selected_tile_coordinates()
-		if get_cell_source_id(tool.layer(), tile) == -1:
+		if not tile_exists(tool.layer(), tile):
 			return
 
 		if not tile_properties.has(tile):
@@ -80,7 +84,7 @@ func _process(delta: float) -> void:
 
 	callback.place_block = func(block: Block):
 		var tile: Vector2 = selected_tile_coordinates()
-		if get_cell_source_id(block.layer, tile) == -1:
+		if not tile_exists(block.layer, tile):
 			set_cell(block.layer, tile, block.source_id, block.atlas_coords)
 			set_default_properties(block.layer, tile)
 

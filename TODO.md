@@ -10,3 +10,6 @@
 ## Items
 - Floating world items
 - Pick things up by walking over them
+
+## Assets
+- Block break audio

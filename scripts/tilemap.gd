@@ -1,15 +1,15 @@
 extends TileMap
 
-var hotbar: Array = [
-	Pickaxe.new(),
-	Hammer.new(),
-	Block.new(0, Vector2(0, 0),  Block.LAYER_FOREGROUND, "Grassy dirt block"),
-	Block.new(0, Vector2(1, 0),  Block.LAYER_FOREGROUND, "Dirt block"),
-	Block.new(0, Vector2(2, 0),  Block.LAYER_FOREGROUND, "Stone block"),
-	Block.new(0, Vector2(3, 0),  Block.LAYER_FOREGROUND, "Log block"),
-	Block.new(0, Vector2(4, 0),  Block.LAYER_FOREGROUND, "Spike block"),
+var hotbar: Array[Item] = [
+	Tool.new(Tool.Type.PICKAXE, 30,  "Wooden pickaxe"),
+	Tool.new(Tool.Type.PICKAXE, 100, "Iron pickaxe"),
+	Tool.new(Tool.Type.HAMMER,  30,  "Wooden hammer"),
+	Block.new(0, Vector2(0, 0), Block.LAYER_FOREGROUND, "Grassy dirt block"),
+	Block.new(0, Vector2(1, 0), Block.LAYER_FOREGROUND, "Dirt block"),
+	Block.new(0, Vector2(2, 0), Block.LAYER_FOREGROUND, "Stone block"),
+	Block.new(0, Vector2(4, 0), Block.LAYER_FOREGROUND, "Spike block"),
 	Block.new(0, Vector2(5, 0), Block.LAYER_FOREGROUND, "Window"),
-	Block.new(1, Vector2(0, 0),  Block.LAYER_BACKGROUND, "Cave wall")]
+	Block.new(1, Vector2(0, 0), Block.LAYER_BACKGROUND, "Cave wall")]
 
 var hotbar_selection_index: int = 0
 
@@ -23,9 +23,23 @@ func change_hotbar_selection(direction: int) -> void:
 	hotbar_selection_index = wrapi(hotbar_selection_index + direction, 0, hotbar.size())
 	log_selected_item()
 
-func selected_tile() -> Vector2:
+func selected_tile_coordinates() -> Vector2:
 	return local_to_map(get_global_mouse_position())
 
+class TileProperties:
+	var health: int
+
+# Vector2 -> TileProperty
+var tile_properties: Dictionary = {}
+
+func set_default_properties(layer: int, tile: Vector2) -> void:
+	var properties = TileProperties.new()
+	var data: TileData = get_cell_tile_data(layer, tile)
+	properties.health = data.get_custom_data("block_health")
+	tile_properties[tile] = properties
+
+const BLOCK_HIT_INTERVAL: float = 0.25
+var block_hit_time: float = 0
 var is_holding_down_left_click: bool = false
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,14 +51,37 @@ func _unhandled_input(event: InputEvent) -> void:
 		is_holding_down_left_click = true
 	elif event.is_action_released("left_click"):
 		is_holding_down_left_click = false
+		block_hit_time = BLOCK_HIT_INTERVAL
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	block_hit_time += delta
+
 	if not is_holding_down_left_click: return
+
 	var callback = Item.UseCallback.new()
-	callback.break_block = func(layer: int):
-		erase_cell(layer, selected_tile())
+
+	callback.hit_block = func(tool: Tool):
+		if block_hit_time < BLOCK_HIT_INTERVAL:
+			return
+		else:
+			block_hit_time = 0
+
+		var tile: Vector2 = selected_tile_coordinates()
+		if get_cell_source_id(tool.layer(), tile) == -1:
+			return
+
+		if not tile_properties.has(tile):
+			set_default_properties(tool.layer(), tile)
+
+		tile_properties[tile].health -= tool.base_damage
+		if tile_properties[tile].health <= 0:
+			erase_cell(tool.layer(), tile)
+			tile_properties.erase(tile)
+
 	callback.place_block = func(block: Block):
-		var tile: Vector2 = selected_tile()
+		var tile: Vector2 = selected_tile_coordinates()
 		if get_cell_source_id(block.layer, tile) == -1:
 			set_cell(block.layer, tile, block.source_id, block.atlas_coords)
+			set_default_properties(block.layer, tile)
+
 	selected_item().use(callback)

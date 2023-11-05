@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://x2khg2eiu5jy"]
+[gd_scene load_steps=6 format=3 uid="uid://x2khg2eiu5jy"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_1da4s"]
-[ext_resource type="Script" path="res://scripts/inventorygridcontainer.gd" id="1_67he5"]
 [ext_resource type="Texture2D" uid="uid://bccdmygc5efs4" path="res://assets/plain inventory slot.png" id="1_y1vea"]
 [ext_resource type="Texture2D" uid="uid://84n14e4maryu" path="res://assets/hotbar inventory slot.png" id="2_0f7w0"]
 
@@ -21,7 +20,6 @@ offset_top = 11.0
 offset_right = 433.0
 offset_bottom = 318.0
 columns = 8
-script = ExtResource("1_67he5")
 
 [node name="hotbarslot1" type="Panel" parent="inventory grids"]
 custom_minimum_size = Vector2(50, 50)

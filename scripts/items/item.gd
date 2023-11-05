@@ -1,6 +1,7 @@
 class_name Item extends Object
 
 var name: String
+var atlas_coords: Vector2
 
 class UseCallback:
 	var hit_block: Callable

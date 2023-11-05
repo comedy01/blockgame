@@ -3,7 +3,6 @@ class_name Block extends Item
 enum { LAYER_FOREGROUND = 1, LAYER_BACKGROUND = 0 }
 
 var layer: int
-var atlas_coords: Vector2
 
 func _init(p_layer: int, p_atlas_coords: Vector2, p_name: String):
 	layer = p_layer

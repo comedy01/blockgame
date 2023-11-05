@@ -1,4 +1,4 @@
-extends GridContainer
+extends Panel
 
 func _init() -> void:
 	visible = false

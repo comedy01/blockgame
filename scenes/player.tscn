@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://ddvgcffncnghb" path="res://scenes/menu.tscn" id="3_hw3e5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_53k6l"]
-size = Vector2(26, 36)
+size = Vector2(30, 46)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_mc610")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(13, 18)
+position = Vector2(15, 23)
 shape = SubResource("RectangleShape2D_53k6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://x2khg2eiu5jy"]
+[gd_scene load_steps=7 format=3 uid="uid://x2khg2eiu5jy"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="1_1da4s"]
+[ext_resource type="Script" path="res://scripts/inventorygridcontainer.gd" id="1_67he5"]
 [ext_resource type="Texture2D" uid="uid://bccdmygc5efs4" path="res://assets/plain inventory slot.png" id="1_y1vea"]
 [ext_resource type="Texture2D" uid="uid://84n14e4maryu" path="res://assets/hotbar inventory slot.png" id="2_0f7w0"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t62pu"]
-texture = ExtResource("1_y1vea")
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4c1yb"]
 texture = ExtResource("2_0f7w0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t62pu"]
+texture = ExtResource("1_y1vea")
 
 [node name="Inventory" type="Node2D"]
 position = Vector2(-3, -4)
@@ -16,199 +17,216 @@ position = Vector2(-3, -4)
 [node name="inventory grids" type="GridContainer" parent="."]
 texture_filter = 1
 offset_left = 5.0
-offset_top = 66.0
-offset_right = 385.0
+offset_top = 11.0
+offset_right = 433.0
 offset_bottom = 318.0
 columns = 8
-script = ExtResource("1_1da4s")
+script = ExtResource("1_67he5")
+
+[node name="hotbarslot1" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot2" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot3" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot4" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot5" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot6" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot7" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+
+[node name="hotbarslot8" type="Panel" parent="inventory grids"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
 
 [node name="Slot1" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot2" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot3" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot4" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot5" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot6" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot7" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot8" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot9" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot10" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot11" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot12" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot13" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot14" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot15" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot16" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot17" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot18" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot19" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot20" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot21" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot22" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot23" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
+script = ExtResource("1_1da4s")
 
 [node name="Slot24" type="Panel" parent="inventory grids"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_t62pu")
-
-[node name="hotbar grids" type="GridContainer" parent="."]
-offset_left = 5.0
-offset_top = 7.0
-offset_right = 435.0
-offset_bottom = 60.0
-columns = 8
-
-[node name="hotbarslot1" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot2" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot3" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot4" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot5" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot6" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot7" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
-
-[node name="hotbarslot8" type="Panel" parent="hotbar grids"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_4c1yb")
+script = ExtResource("1_1da4s")

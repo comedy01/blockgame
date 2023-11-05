@@ -32,4 +32,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _draw() -> void:
-	draw_rect(Rect2(Vector2(0, 0), Vector2(26, 36)), Color(1, 0, 0), false)
+	draw_rect(Rect2(Vector2(0, 0), Vector2(30, 46)), Color(1, 0, 0), true)

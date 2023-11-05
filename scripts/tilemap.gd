@@ -10,7 +10,7 @@ func block(tool_type: Tool.Type, layer: int, atlas_coords: Vector2, name: String
 func tool_type_for(layer: int, tile: Vector2) -> Tool.Type:
 	return required_tool_types[layer][get_cell_atlas_coords(layer, tile) as Vector2]
 
-var hotbar: Array[Item] = [
+var inventory: Array[Item] = [
 	Tool.new(Tool.Type.PICKAXE, 30,  "Wooden pickaxe"),
 	Tool.new(Tool.Type.PICKAXE, 100, "Iron pickaxe"),
 	Tool.new(Tool.Type.HAMMER,  30,  "Wooden hammer"),
@@ -25,15 +25,17 @@ var hotbar: Array[Item] = [
 	block(Tool.Type.HAMMER,  Block.LAYER_BACKGROUND, Vector2(0, 0), "Cave wall")]
 
 var hotbar_selection_index: int = 0
+const hotbar_size = 8
 
 func selected_item() -> Item:
-	return hotbar[hotbar_selection_index]
+	return inventory[hotbar_selection_index]
 
 func log_selected_item() -> void:
 	print("Currently selected: %s" % selected_item().name)
+	print(hotbar_selection_index)
 
 func change_hotbar_selection(direction: int) -> void:
-	hotbar_selection_index = wrapi(hotbar_selection_index + direction, 0, hotbar.size())
+	hotbar_selection_index = wrapi(hotbar_selection_index + direction, 0, hotbar_size)
 	log_selected_item()
 
 func selected_tile_coordinates() -> Vector2:

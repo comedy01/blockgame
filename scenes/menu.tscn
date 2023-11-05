@@ -15,7 +15,7 @@ offset_bottom = 598.0
 text = "Settings"
 script = ExtResource("1_4ja3q")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="menupanel" type="Panel" parent="."]
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_m2flc")
 offset_left = 485.0
@@ -24,7 +24,7 @@ offset_right = 961.0
 offset_bottom = 643.0
 script = ExtResource("2_np14t")
 
-[node name="Resume" type="Button" parent="Panel"]
+[node name="Resume" type="Button" parent="menupanel"]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 93.0
@@ -32,7 +32,7 @@ offset_right = 363.0
 offset_bottom = 204.0
 text = "Play"
 
-[node name="Quit" type="Button" parent="Panel"]
+[node name="Quit" type="Button" parent="menupanel"]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 265.0
@@ -40,6 +40,6 @@ offset_right = 365.0
 offset_bottom = 379.0
 text = "Quit"
 
-[connection signal="pressed" from="Settings Button" to="Panel" method="_on_pressed"]
-[connection signal="pressed" from="Panel/Resume" to="Panel" method="_on_resume_pressed"]
-[connection signal="pressed" from="Panel/Quit" to="Panel" method="_on_quit_pressed"]
+[connection signal="pressed" from="Settings Button" to="menupanel" method="_on_pressed"]
+[connection signal="pressed" from="menupanel/Resume" to="menupanel" method="_on_resume_pressed"]
+[connection signal="pressed" from="menupanel/Quit" to="menupanel" method="_on_quit_pressed"]

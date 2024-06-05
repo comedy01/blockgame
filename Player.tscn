@@ -5,16 +5,21 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_6b6xs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucog5"]
+size = Vector2(32, 53.6296)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.9)
 script = ExtResource("1_27iv1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(20, 20)
+position = Vector2(16, 24)
+scale = Vector2(32, 48)
 texture = SubResource("CanvasTexture_6b6xs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16.25, 24.1333)
+scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_ucog5")
 
 [node name="Camera2D" type="Camera2D" parent="."]

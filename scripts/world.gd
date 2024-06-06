@@ -8,6 +8,8 @@ const BLOCK_LAYER: int = 0
 const GRASS_BLOCK_ATLAS = Vector2i(0, 0)
 const DIRT_BLOCK_ATLAS = Vector2i(1,0)
 const STONE_BLOCK_ATLAS = Vector2i(2,0)
+const GRASS_RAMP_RIGHT_ATLAS = Vector2i(10,0)
+const GRASS_RAMP_LEFT_ATLAS = Vector2i(11,0)
 
 const WORLD_WIDTH: int = 2000
 const WORLD_HEIGHT: int = 500
@@ -31,19 +33,26 @@ func _ready():
 	var noise : FastNoiseLite = noise_map.noise
 	var stone_y: int = randi_range(1,20)
 	var current_stone_offset = 0
+	var last_dirt_height = null
+	var dirt_height = null
 	for x in WORLD_WIDTH:
-		var dirt_height = int(noise.get_noise_1d(x) * 10 )
+		last_dirt_height = dirt_height
+		dirt_height = int(noise.get_noise_1d(x) * 10 )
 		current_stone_offset = calculate_stone_offset(current_stone_offset, stone_y, dirt_height)
 		tile_map.set_cell(BLOCK_LAYER, Vector2(x, dirt_height), 0, GRASS_BLOCK_ATLAS)
 		tile_map.set_cell(BLOCK_LAYER, Vector2(x, stone_y + current_stone_offset),0, STONE_BLOCK_ATLAS)
 		stone_y += current_stone_offset
+		
+		if (dirt_height + 1 == last_dirt_height):
+			tile_map.set_cell(BLOCK_LAYER, Vector2(x, dirt_height), 0, GRASS_RAMP_RIGHT_ATLAS)
+		elif (dirt_height - 1 == last_dirt_height):
+			tile_map.set_cell(BLOCK_LAYER, Vector2(x-1, dirt_height -1 ), 0, GRASS_RAMP_LEFT_ATLAS)
+		
 		for y in range(dirt_height + 1, stone_y): #fill in gap between stone and grass layer with dirt
 			tile_map.set_cell(BLOCK_LAYER, Vector2(x, y), 0, DIRT_BLOCK_ATLAS)
 		for y in 30: #chose random stone depth we can adjust later
 			tile_map.set_cell(BLOCK_LAYER, Vector2(x,stone_y + y),0, STONE_BLOCK_ATLAS)
-	
-
-	
+		
 func _process(_delta):
 	pass 
 	

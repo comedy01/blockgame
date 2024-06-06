@@ -4,9 +4,8 @@
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6b6xs"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e5iu3"]
-radius = 17.2872
-height = 50.7254
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbmu6"]
+size = Vector2(34.6467, 50.7246)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.9)
@@ -19,9 +18,9 @@ scale = Vector2(32, 47)
 texture = SubResource("CanvasTexture_6b6xs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16.25, 24)
+position = Vector2(16, 23.7)
 scale = Vector2(0.92, 0.92)
-shape = SubResource("CapsuleShape2D_e5iu3")
+shape = SubResource("RectangleShape2D_jbmu6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(16.25, 24.4444)

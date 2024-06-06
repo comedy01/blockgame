@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="blockgame"
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 
 [display]
@@ -19,7 +19,7 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-window/stretch/scale=6.0
+window/stretch/scale=3.0
 
 [filesystem]
 

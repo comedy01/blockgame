@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vb3pn4biopt0"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_27iv1"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_27iv1"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6b6xs"]
 
@@ -8,6 +8,7 @@
 size = Vector2(32, 53.6296)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(1, -46)
 scale = Vector2(0.8, 0.9)
 script = ExtResource("1_27iv1")
 

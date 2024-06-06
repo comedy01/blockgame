@@ -38,20 +38,22 @@ func _ready():
 	for x in WORLD_WIDTH:
 		last_dirt_height = dirt_height
 		dirt_height = int(noise.get_noise_1d(x) * 10 )
+			
 		current_stone_offset = calculate_stone_offset(current_stone_offset, stone_y, dirt_height)
 		tile_map.set_cell(BLOCK_LAYER, Vector2(x, dirt_height), 0, GRASS_BLOCK_ATLAS)
 		tile_map.set_cell(BLOCK_LAYER, Vector2(x, stone_y + current_stone_offset),0, STONE_BLOCK_ATLAS)
 		stone_y += current_stone_offset
 		
-		if (dirt_height + 1 == last_dirt_height):
+		if (dirt_height + 1 == last_dirt_height and tile_map.get_cell_atlas_coords(BLOCK_LAYER, Vector2(x, dirt_height)) == GRASS_BLOCK_ATLAS) :
 			tile_map.set_cell(BLOCK_LAYER, Vector2(x, dirt_height), 0, GRASS_RAMP_RIGHT_ATLAS)
-		elif (dirt_height - 1 == last_dirt_height):
+		elif (dirt_height - 1 == last_dirt_height and tile_map.get_cell_atlas_coords(BLOCK_LAYER, Vector2(x-1, dirt_height-1),) == GRASS_BLOCK_ATLAS):
 			tile_map.set_cell(BLOCK_LAYER, Vector2(x-1, dirt_height -1 ), 0, GRASS_RAMP_LEFT_ATLAS)
 		
 		for y in range(dirt_height + 1, stone_y): #fill in gap between stone and grass layer with dirt
 			tile_map.set_cell(BLOCK_LAYER, Vector2(x, y), 0, DIRT_BLOCK_ATLAS)
 		for y in 30: #chose random stone depth we can adjust later
 			tile_map.set_cell(BLOCK_LAYER, Vector2(x,stone_y + y),0, STONE_BLOCK_ATLAS)
+	
 		
 func _process(_delta):
 	pass 

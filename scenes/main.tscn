@@ -83,15 +83,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_r5xb0")
 
 [sub_resource type="GDScript" id="GDScript_hvc5h"]
-script/source = "extends TileMap
-
-func _ready():
-	pass # Replace with function body.
-
-func _process(delta):
-	pass
-
-"
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_nkagi")

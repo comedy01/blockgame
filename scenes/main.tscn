@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cljo3v1xi128a"]
+[gd_scene load_steps=13 format=3 uid="uid://cljo3v1xi128a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_nkagi"]
 [ext_resource type="PackedScene" uid="uid://vb3pn4biopt0" path="res://scenes/Player.tscn" id="2_3e8jx"]
@@ -84,6 +84,18 @@ sources/0 = SubResource("TileSetAtlasSource_r5xb0")
 
 [sub_resource type="GDScript" id="GDScript_hvc5h"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4q0ec"]
+size = Vector2(160, 8000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exm85"]
+size = Vector2(32000, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxcek"]
+size = Vector2(160, 8000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kkohl"]
+size = Vector2(32000, 160)
+
 [node name="world" type="Node2D"]
 script = ExtResource("1_nkagi")
 noise_map = SubResource("NoiseTexture2D_eaqnw")
@@ -96,4 +108,22 @@ script = SubResource("GDScript_hvc5h")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("2_3e8jx")]
 texture_filter = 1
-position = Vector2(30, -50)
+position = Vector2(67, -100)
+
+[node name="boundaries" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D_left" type="CollisionShape2D" parent="boundaries"]
+position = Vector2(-80, 2400)
+shape = SubResource("RectangleShape2D_4q0ec")
+
+[node name="CollisionShape2D_top" type="CollisionShape2D" parent="boundaries"]
+position = Vector2(16000, -1680)
+shape = SubResource("RectangleShape2D_exm85")
+
+[node name="CollisionShape2D_right" type="CollisionShape2D" parent="boundaries"]
+position = Vector2(32080, 2400)
+shape = SubResource("RectangleShape2D_uxcek")
+
+[node name="CollisionShape2D_bottom" type="CollisionShape2D" parent="boundaries"]
+position = Vector2(16000, 6480)
+shape = SubResource("RectangleShape2D_kkohl")

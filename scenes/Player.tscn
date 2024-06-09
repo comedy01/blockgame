@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://vb3pn4biopt0"]
+[gd_scene load_steps=5 format=3 uid="uid://vb3pn4biopt0"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_27iv1"]
+[ext_resource type="Script" path="res://scenes/Camera2D.gd" id="2_ksxcs"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6b6xs"]
 
@@ -24,3 +25,8 @@ shape = SubResource("RectangleShape2D_jbmu6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(16.25, 24.4444)
+limit_left = 0
+limit_top = -1600
+limit_right = 32000
+limit_bottom = 6400
+script = ExtResource("2_ksxcs")

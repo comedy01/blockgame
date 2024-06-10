@@ -1,11 +1,10 @@
 extends Camera2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _input(event):
+	if Input.is_action_just_pressed("zoom_in"):
+		if (self.zoom < Vector2(2, 2)):
+			self.zoom += Vector2(0.1, 0.1)
+	elif Input.is_action_just_pressed("zoom_out"):
+		if (self.zoom > Vector2(0.6, 0.6)):
+			self.zoom -= Vector2(0.1, 0.1)
+		

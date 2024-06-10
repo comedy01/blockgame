@@ -1,14 +1,40 @@
-[gd_scene load_steps=13 format=3 uid="uid://cljo3v1xi128a"]
+[gd_scene load_steps=18 format=3 uid="uid://cljo3v1xi128a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_nkagi"]
 [ext_resource type="PackedScene" uid="uid://vb3pn4biopt0" path="res://scenes/Player.tscn" id="2_3e8jx"]
 [ext_resource type="Texture2D" uid="uid://1w5pmardxtlp" path="res://tileset.png" id="3_ymcts"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_f88gg"]
-frequency = 0.0178
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ga70w"]
+noise_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eaqnw"]
-noise = SubResource("FastNoiseLite_f88gg")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_128qg"]
+noise = SubResource("FastNoiseLite_ga70w")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_asjrw"]
+noise_type = 0
+seed = 22
+frequency = 0.0238
+fractal_gain = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t4vux"]
+width = 2000
+height = 25
+noise = SubResource("FastNoiseLite_asjrw")
+
+[sub_resource type="Gradient" id="Gradient_x4nfv"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.496732, 0.993464, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_njcjq"]
+noise_type = 0
+frequency = 0.012
+fractal_gain = 0.0
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2een2"]
+color_ramp = SubResource("Gradient_x4nfv")
+noise = SubResource("FastNoiseLite_njcjq")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r5xb0"]
 texture = ExtResource("3_ymcts")
@@ -98,7 +124,9 @@ size = Vector2(32000, 160)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_nkagi")
-noise_map = SubResource("NoiseTexture2D_eaqnw")
+noise_map_grass = SubResource("NoiseTexture2D_128qg")
+noise_map_dirt = SubResource("NoiseTexture2D_t4vux")
+noise_map_caves = SubResource("NoiseTexture2D_2een2")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1

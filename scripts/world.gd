@@ -75,7 +75,6 @@ func generate_iron(x: int, y: int, iron_noise: int):
 		set_block(x, y, IRON_BLOCK_ATLAS)
 
 func _ready():
-	print(get_noise_iron)
 	var cave_noise: FastNoiseLite = noise_map_caves.noise
 	var stone_index: int = -4
 

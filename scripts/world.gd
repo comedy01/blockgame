@@ -4,6 +4,7 @@ extends Node2D
 @export var noise_map_grass : Texture2D
 @export var noise_map_dirt : Texture2D
 @export var noise_map_caves: Texture2D
+@export var noise_map_iron : Texture2D
 
 const SOURCE_ID = 0
 const BLOCK_LAYER = 0
@@ -12,6 +13,7 @@ const DIRT_BLOCK_ATLAS = Vector2i(1,0)
 const STONE_BLOCK_ATLAS = Vector2i(2,0)
 const GRASS_RAMP_RIGHT_ATLAS = Vector2i(10,0)
 const GRASS_RAMP_LEFT_ATLAS = Vector2i(11,0)
+const IRON_BLOCK_ATLAS = Vector2i(0,5)
 const WORLD_SIZE = Vector2i(2000, 500)
 
 func get_noise_grass(x: int) -> int:
@@ -22,6 +24,9 @@ func get_noise_dirt(x, y) -> int:
 
 func get_noise_caves(x, y) -> int:
 	return noise_map_caves.noise.get_noise_2d(x,y) * 10	
+
+func get_noise_iron(x: int, y: int) -> int:
+	return noise_map_iron.noise.get_noise_2d(x,y) * 10
 
 func set_block(x: int, y: int, atlas: Vector2i) -> void:
 	tile_map.set_cell(BLOCK_LAYER, Vector2i(x, y), SOURCE_ID, atlas)
@@ -64,8 +69,13 @@ func generate_underground(stone_index: int, x: int, y: int, grass_y: int):
 		return 3
 	else: 
 		return stone_index
+		
+func generate_iron(x: int, y: int, iron_noise: int):
+	if (iron_noise < -4.5 and y > 20):
+		set_block(x, y, IRON_BLOCK_ATLAS)
 
 func _ready():
+	print(get_noise_iron)
 	var cave_noise: FastNoiseLite = noise_map_caves.noise
 	var stone_index: int = -4
 
@@ -73,13 +83,18 @@ func _ready():
 		stone_index = -4
 		var grass_y = get_noise_grass(x)
 		for y in 100-grass_y:
+			print(get_noise_iron(x,y))
 			var new_stone_index = generate_underground(stone_index, x, y, grass_y)
 			stone_index = new_stone_index
+			
+			#Generate Iron (:
+			generate_iron(x,y, get_noise_iron(x,y))
 			
 		# Grass surface
 		set_grass(x, grass_y, get_noise_grass(x - 1))
 		
 		for y in WORLD_SIZE.y:
+			
 			if (cave_noise.get_noise_2d(x,y) < -0.7):
 				tile_map.erase_cell(BLOCK_LAYER, Vector2i(x, y+grass_y-1))
 

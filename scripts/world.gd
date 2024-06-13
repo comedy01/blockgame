@@ -82,7 +82,6 @@ func _ready():
 		stone_index = -4
 		var grass_y = get_noise_grass(x)
 		for y in 100-grass_y:
-			print(get_noise_iron(x,y))
 			var new_stone_index = generate_underground(stone_index, x, y, grass_y)
 			stone_index = new_stone_index
 			

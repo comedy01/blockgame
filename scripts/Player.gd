@@ -8,6 +8,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("close"):
 		get_tree().quit()
+		
+	if Input.is_action_just_pressed("left_click"):
+		$AnimationPlayer.play("swing_tool")
+	if Input.is_action_just_released("left_click"):
+		$AnimationPlayer.play("idle")
+		
 	
 	if is_on_floor():
 		if Input.is_action_just_pressed("move_up"):
